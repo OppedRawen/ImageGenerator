@@ -4,12 +4,17 @@ import cors from 'cors';
 // in nodejs, if we are importing from a file. we have to specify .js
 // in react we don't have to do that
 import connectDB from './mongodb/connect.js';
+import postRoutes from './routes/posts.js';
+import dalleRoutes from './routes/dalles.js';
+
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
-
+app.use('/api/v1/post',postRoutes);
+app.use('/api/v1/dalle',dalleRoutes);
 app.get('/', async(req,res)=>{
     res.send('Hello from Dalle API');
 });
