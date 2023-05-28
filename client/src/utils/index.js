@@ -1,4 +1,4 @@
-import {surprisemePrompts} from '../constants';
+import {surpriseMePrompts} from '../constants';
 export function getRandomPrompt(promt){
     const randomIndex = Math.floor(Math.random() * surprisemePrompts.length);
     const randomPrompt = surprisemePrompts[randomIndex];
