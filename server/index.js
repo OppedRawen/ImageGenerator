@@ -4,8 +4,8 @@ import cors from 'cors';
 // in nodejs, if we are importing from a file. we have to specify .js
 // in react we don't have to do that
 import connectDB from './mongodb/connect.js';
-import postRoutes from './routes/dalleRoutes.js';
-import dalleRoutes from './routes/postRoutes.js';
+import dalleRoutes from './routes/dalleRoutes.js';
+import postRoutes from './routes/postRoutes.js';
 
 
 dotenv.config();
