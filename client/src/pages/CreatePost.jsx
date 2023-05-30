@@ -26,13 +26,17 @@ const CreatePost = ()=>{
         if(form.prompt&&form.photo){
             setLoading(true);
             try {
-                const response = await fetch('http://localhost:8080/api/v1/posts', {
+                const response = await fetch('/api/v1/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(form),
                 });
+                if (!response.ok) {
+                    const message = await response.text();
+                    throw new Error(`Fetch failed: ${message}`);
+                  }
                 await response.json();
                 navigate('/');
 
