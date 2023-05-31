@@ -1,15 +1,24 @@
-import express from 'express';
-import * as dotenv from 'dotenv';
-import cors from 'cors';
-// in nodejs, if we are importing from a file. we have to specify .js
-// in react we don't have to do that
-import connectDB from './mongodb/connect.js';
-import dalleRoutes from './routes/dalleRoutes.js';
-import postRoutes from './routes/postRoutes.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// import express from 'express';
+// import * as dotenv from 'dotenv';
+// import cors from 'cors';
+// // in nodejs, if we are importing from a file. we have to specify .js
+// // in react we don't have to do that
+// import connectDB from './mongodb/connect.js';
+// import dalleRoutes from './routes/dalleRoutes.js';
+// import postRoutes from './routes/postRoutes.js';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
 
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
+const connectDB = require('./mongodb/connect.js');
+const dalleRoutes = require('./routes/dalleRoutes.js');
+const postRoutes = require('./routes/postRoutes.js');
+const dotenv = require('dotenv');
+const fileURLToPath = require('url');
+const dirname = require('path');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
