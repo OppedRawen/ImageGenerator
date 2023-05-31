@@ -1,8 +1,13 @@
-import express from 'express';
-import * as dotenv from 'dotenv';
-import {v2 as cloudinary} from 'cloudinary';
+// import express from 'express';
+// import * as dotenv from 'dotenv';
+// import {v2 as cloudinary} from 'cloudinary';
 
-import Post from '../mongodb/models/post.js';
+const express = require('express');
+const dotenv = require('dotenv');
+const {v2:cloudinary} = require('cloudinary');
+// import Post from '../mongodb/models/post.js';
+
+const Post = require('../mongodb/models/post.js');
 // make sure the environment variable is populated
 dotenv.config();
 const router = express.Router();
@@ -46,4 +51,6 @@ res.status(201).json({success:true,data:newPost});
     res.status(500).json({success:false,message:'unable to create a post'});
 }
 });
-export default router;
+// export default router;
+
+module.exports = router;

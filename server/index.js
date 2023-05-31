@@ -20,9 +20,6 @@ const dotenv = require('dotenv');
 // const fileURLToPath = require('url');
 // const dirname = require('path');
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
 
 dotenv.config();
 
@@ -31,23 +28,6 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
-// if (process.env.NODE_ENV === 'production') {
-//     // Serve any static files
-//     app.use(express.static(path.join(__dirname, '../client/dist')));
-  
-//     // Handle React routing, return all requests to React app
-//     app.get('*', function(req, res) {
-//       res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-//     });
-//   }
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static('client/build'));
-
-    
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//     });
-// }
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
