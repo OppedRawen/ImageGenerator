@@ -17,10 +17,11 @@ const connectDB = require('./mongodb/connect.js');
 const dalleRoutes = require('./routes/dalleRoutes.js');
 const postRoutes = require('./routes/postRoutes.js');
 const dotenv = require('dotenv');
-const fileURLToPath = require('url');
-const dirname = require('path');
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const fileURLToPath = require('url');
+// const dirname = require('path');
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 
 dotenv.config();
@@ -39,19 +40,27 @@ app.use(express.json({ limit: '50mb' }));
 //       res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 //     });
 //   }
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('client/build'));
 
     
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//     });
+// }
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+  }
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+    
 app.use('/api/v1/posts',postRoutes);
 app.use('/api/v1/dalle',dalleRoutes);
-app.get('/', async(req,res)=>{
-    res.send('Hello from Dalle API');
-});
+// app.get('/', async(req,res)=>{
+//     res.send('Hello from Dalle API');
+// });
 
 
 
