@@ -30,7 +30,14 @@ app.use(express.json({ limit: '50mb' }));
 //       res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 //     });
 //   }
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
 
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 app.use('/api/v1/posts',postRoutes);
 app.use('/api/v1/dalle',dalleRoutes);
 app.get('/', async(req,res)=>{
